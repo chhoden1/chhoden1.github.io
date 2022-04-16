@@ -1957,7 +1957,7 @@ input, select, textarea {
 		}
 
 			.main.style1 h2 {
-				font-size: 4.25em;
+				font-size: 4.00em;
 				line-height: 1em;
 			}
 
@@ -2244,8 +2244,8 @@ input, select, textarea {
 /* Intro */
 
 	#intro {
-		background: url("images/overlay.png"), url("../../images/intro.jpg");
-		background-size: 256px 256px, cover;
+		background: url("images/overlay.png"), url("../../images/color-image.png");
+		background-size: 400px 200px, cover;
 		background-attachment: fixed, fixed;
 		background-position: top left, bottom center;
 		background-repeat: repeat, no-repeat;
