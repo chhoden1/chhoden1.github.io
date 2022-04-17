@@ -17,6 +17,14 @@
 				fill: rgb(25, 104, 104);
 			}
 		</style>
+		<style>
+			.vertical {
+				border-left: 6px solid black;
+				height: 700px;
+				position:absolute;
+				left: 50%;
+			}
+		</style>
 	</head>
 	<body class="is-preload">
 		<header id="header">
@@ -39,11 +47,61 @@
 					<h3 style= "color:darkslategray" text-align:left>Overview</h3>
 					<p style="color: black" align="justify">Bubble tea, also known as boba or tapioca milk tea is a popular drink that originated in Taiwan in the 1980s. The bubble tea market is projected to reach $4.3 billion by the year 2027. </p>
 					<footer>
-						<a href="#work" class="button style2 down">More</a>
+						<a href="#one" class="button style2 down">More</a>
 					</footer>
 				</div>
 			</section>
+			<!-- One -->
+			<section id="one" class="main style2 left dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h3>Data</h3>
+					</header>
+					<p>The dataset for this project was collected from Yelp API and different boba shops websites
+						through web scraping in python. Data for the boba shops in the Bay Area from Kaggle https://www.kaggle.com/vnxiclaire/bobabayarea was also used.</p>
+				</div>
+				<br>
+				<div class="content box style2">
+					<header>
+						<h3>Data Processing</h3>
+					</header>
+					<p>The data from Kaggle was already in tabular form and nicely formatted by columns, however, I did have to do a substantial data cleanup for the
+						data collected from Yelp API. The data will was processed using Python and the Pandas framework and saved as a csv file. I have used boba shop names, total number of bubble tea
+						shops, location, city, ratings, etc. for this project.</p>
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
 
+
+		<!-- Two -->
+			<!--<section id="one" class="main style2 right dark fullscreen"> -->
+				<section id="two">
+				<!--<div class ="content">-->
+					<div style="width: 100%; overflow: hidden;">
+						<div style="width: 600px; float: left;">
+							<!--<h2> Bar Chart Visualization</h2>
+							<h3>Ranking of the most popular boba chains by count of boba shops in the US</h3> -->
+						<script src="assets/js/scatterplot.js" ></script>
+						</div>
+						<div class = "vertical"></div>
+						<div style="margin-left: 620px;"> 
+							
+						 </div>
+						 <script src="assets/js/bar-chart.js"></script>
+				  <!-- </div>-->
+					<!--<h2> Bar Chart Visualization</h2>
+					<h3>Ranking of the most popular boba chains by count of boba shops in the US</h3>
+			
+					<p>KungFu Tea ranks number one in terms of the total number of boba shop establishments in the United States, followed by ShareTea.</p>
+					-->
+				</div>
+				<div class="content box style2">
+				<!-- <script src="assets/js/bar-chart.js"></script>	-->
+				</div> -->
+				
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+			
 			<!-- Visualizations -->
 			<section id="work" class="main style3 primary">
 				<div class="content">
@@ -55,10 +113,11 @@
 					<!-- Gallery  -->
 						<div class="gallery">
 							<article class="from-left">
-								<a href="#barchart" class="image fit"> <img src="images/bar-chart-boba.png" title="Bar Chart" alt="" /></a>
+								<a href="images/scatterplot-boba.png" class="image fit"> <img src="images/thumbs/01.jpg" title="Scatterplot Chart" alt="" /></a>		
 							</article>
+							<div class = "vertical"></div>
 							<article class="from-right">
-								<a href="images/fulls/02.jpg" class="image fit"><img src="images/thumbs/02.jpg" title="Scatterplot" alt="" /></a>
+								<a href="images/bar-chart-boba.png" class="image fit"><img src="images/thumbs/02.jpg" title="Bar Chart" alt="" /></a>
 							</article>
 							<article class="from-left">
 								<a href="images/fulls/03.jpg" class="image fit"><img src="images/thumbs/03.jpg" title="Histogram Chart" alt="" /></a>
@@ -69,33 +128,7 @@
 						</div>
 
 				</div>
-				<a href="#one" class="button style2 down anchored">Next</a>
-			</section>
-
-		<!-- One -->
-			<!--<section id="one" class="main style2 right dark fullscreen"> -->
-				<section id="one" class="main style1 dark fullscreen">
-				<!--<div class ="content">
-					<h2> Bar Chart Visualization</h2>
-					<h3>Ranking of the most popular boba chains by count of boba shops in the US</h3>
-			
-					<p>KungFu Tea ranks number one in terms of the total number of boba shop establishments in the United States, followed by ShareTea.</p>
-					
-				</div>
-				<div class="content box style2">
-					<script src="assets/js/bar-chart.js"></script>	
-				</div> -->
-				<div style="width: 100%; overflow: hidden;">
-					<div style="width: 600px; float: left;">
-						<h2> Bar Chart Visualization</h2>
-						<h3>Ranking of the most popular boba chains by count of boba shops in the US</h3>
-					 </div>
-					<div style="margin-left: 620px;"> 
-						
-					 </div>
-					 <script src="assets/js/bar-chart.js"></script>
-			   </div>
-				<a href="#two" class="button style2 down anchored">Next</a>
+				<a href="#intro" class="button style2 down anchored">Next</a>
 			</section>
 
 			<!-- Bar Chart -->
@@ -104,56 +137,15 @@
 					<script src="assets/js/bar-chart.js"></script>
 				</div>
 			</section> -->
-		<!-- Two -->
-			<section id="two" class="main style2 left dark fullscreen">
-				<div class="content box style2">
-					<header>
-						<h2>Who I Am</h2>
-					</header>
-					<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.
-					Fusce blandit ultrices sapien, in accumsan orci rhoncus eu. Sed sodales venenatis arcu,
-					id varius justo euismod in. Curabitur egestas consectetur magna.</p>
-				</div>
-				<a href="#intro" class="button style2 down anchored">Next</a>
-			</section>
-
-		<!-- Contact -->
-		<!--	<section id="contact" class="main style3 secondary">
-				<div class="content">
-					<header>
-						<h2>Say Hello.</h2>
-						<p>Lorem ipsum dolor sit amet et sapien sed elementum egestas dolore condimentum.</p>
-					</header>
-					<div class="box">
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
-								<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
-								<div class="field"><textarea name="message" placeholder="Message" rows="6"></textarea></div>
-							</div>
-							<ul class="actions special">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
-						</form>
-					</div>
-				</div>
-			</section>
-		-->
-
+		
 		<!-- Footer -->
 			<footer id="footer">
 
 				<!-- Icons -->
 					<ul class="icons">
-						<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>   
+						<li><a href="https://www.linkedin.com/in/chhodensherpa/" class="icon brands fa-linkedin-in"><span class="label">GitHub</span></a></li>
+						<li><a href="https://github.com" class="icon brands fa fa-github"><span class="label">GitHub</span></a></li>   
 					</ul>
-
-				<!-- Menu -->
-					<!--<ul class="menu">
-						<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-					</ul>
-				-->
 
 			</footer>
 

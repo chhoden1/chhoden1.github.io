@@ -1907,11 +1907,13 @@ input, select, textarea {
 			}
 
 			.main.style3.secondary {
-				background: #f5f6f7;
+				background: #0d0d0e;
 			}
 
 		.main.dark {
-			color: #ffffff;
+			color: #0d0d0d;
+			background: #a09c9c;
+
 		}
 
 			.main.dark a {
@@ -1919,7 +1921,7 @@ input, select, textarea {
 			}
 
 			.main.dark .button.style2 {
-				border-color: #ffffff;
+				border-color: #141212;
 			}
 
 				.main.dark .button.style2:hover {

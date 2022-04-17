@@ -17,6 +17,7 @@ function main()
 						.attr("transform", "translate(100, 0")
 						.attr("x", 120)
 						.attr("y", 30)
+                        .attr("stroke", "black")
 						.attr("font-size", "18px")
 						.text("Ranking of the most popular boba chains in the United States")
 					
