@@ -16,7 +16,7 @@ function main()
 						svg.append("text")
 						.attr("transform", "translate(100, 0")
 						.attr("x", 120)
-						.attr("y", 60)
+						.attr("y", 30)
 						.attr("font-size", "18px")
 						.text("Ranking of the most popular boba chains in the United States")
 					
@@ -28,7 +28,7 @@ function main()
 					
 						var container_g = svg.append("g")
 							.attr("transform",
-								"translate(" + 80 + ", " + 80 + ")");
+								"translate(" + 80 + ", " + 45 + ")");
 					
 						
 					  // d3.csv function is called to read the file from a csv file
