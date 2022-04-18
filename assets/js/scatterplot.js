@@ -98,7 +98,7 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
   		// set the radius to 4
       .attr("r",4)
       // set the color of the dots to steelblue
-      .style("fill", "rgb(25, 104, 104)")
+      .style("fill", "#69b3a2")
   		.style("stroke", "black")
 })
 }
