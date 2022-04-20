@@ -34,20 +34,20 @@ var margin = {top: 100, right: 30, bottom: 40, left: 160},
 
   // set the y axis
   var yAxis = d3.scaleLinear()    
-    .range([ height, 0]);
+    .range([height, 0]);
       
 // load the data from a csv file
 // d3.csv function is called to read the csv file 
 // .then(function(data) ensures that the code does not start running until the data has been completely loaded
 d3.csv("csv/scatterplot_data.csv").then(function(data) {
   
-   yAxis.domain([0, d3.max(data, function(d){
+   yAxis.domain([3, d3.max(data, function(d){
       return +d.BobaPrice;
     })]); 
    svg.append("g")
     .call(d3.axisLeft(yAxis).tickFormat(function(d) {
             return "$" + d ;
-        }).ticks(7))
+        }).ticks(4))
   // add the attributes for text
   	.append("text")
   // the y-axis label is rotated at 90 degress
@@ -61,14 +61,13 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
     // set the axis label for y-axis
     .text("Price of a boba drink per city on average");
   
-   xAxis.domain([0, d3.max(data, function(d){
-    // console.log(d.CostOfLivingIndex); 
+   xAxis.domain([50, d3.max(data, function(d){
       return +d.CostofLivingIndex;
     })]);   
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(xAxis).tickFormat(function(d){
-    		return d; }).ticks(5))
+    		return d; }).ticks(3))
      // add the attributes for text
   	.append("text")
     // specify the x position for the x-axis label
@@ -79,9 +78,43 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
   	// set the axis label for x-axis
   	.text("Cost of Living Index");
   
-  // in_state_total_tuition,out_of_state_total_tuition
-  
-  // create the dots for the scatterplot
+// Add a tooltip div
+  // Its opacity is set to 0: we don't see it by default.
+  const tooltip = d3.select("body")
+    .append("div")
+    .style("position", "absolute")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("padding", "10px")
+
+// Function that changes the tooltip when the user hovers over a point.
+  // Its opacity is set to 1
+  const mouseover = function(event, d) {
+    tooltip
+      .style("opacity", 1)
+  }
+
+  const mousemove = function(event, d) {
+    tooltip
+      .html(d.City)
+      .style("left", (event.x)/2 + "px") 
+      .style("top", (event.y)/2 + "px")
+  }
+
+  // Function that changes this tooltip when the user leaves a point. Reset opacity to 0 again
+  const mouseleave = function(event,d) {
+    tooltip
+      .transition()
+      .duration(200)
+      .style("opacity", 0)
+  }
+
+
+  // create the points for the scatterplot
   svg.append('g')
     .selectAll("dot")
     .data(data)
@@ -100,6 +133,9 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
       // set the color of the dots to steelblue
       .style("fill", "#69b3a2")
   		.style("stroke", "black")
+      .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
 })
 }
 
