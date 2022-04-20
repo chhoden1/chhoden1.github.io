@@ -42,7 +42,46 @@ function main()
 		yScale.domain([0, d3.max(data, function(d) {
 			return +d.numberofestablishments; // convert the string to an integer
 			})]);
-								
+				
+			
+
+			// Add a tooltip div
+  // Its opacity is set to 0: we don't see it by default.
+  const tooltip = d3.select("body")
+  .append("div")
+  .style("position", "absolute")
+  .style("opacity", 0)
+  .attr("class", "tooltip")
+  .style("background-color", "white")
+  .style("border", "solid")
+  .style("border-width", "1px")
+  .style("border-radius", "5px")
+  .style("padding", "10px")
+
+
+
+// A function that change this tooltip when the user hover a point.
+// Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+const mouseover = function(event, d) {
+  tooltip
+	.style("opacity", 1)
+}
+
+const mousemove = function(event, d) {
+  tooltip
+	.html(d.numberofestablishments)
+	.style("left", (event.x)/2 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+	.style("top", (event.y)/2 + "px")
+}
+
+// A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+const mouseleave = function(event,d) {
+  tooltip
+	.transition()
+	.duration(200)
+	.style("opacity", 0)
+}
+
 		// Draw the bars
 		container_g.selectAll(".bar")
 		// binds the data to the elements that we need to create
@@ -63,6 +102,9 @@ function main()
 			.attr("height", function(d){
 				return height - yScale(d.numberofestablishments);
 			})
+			.on("mouseover", mouseover)
+			.on("mousemove", mousemove)
+			.on("mouseleave", mouseleave)
 							
 		// append the x - axis to the container group to display the x-axis
 		container_g.append("g")
