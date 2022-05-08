@@ -75,7 +75,7 @@ d3.csv("https://gist.githubusercontent.com/chhodens/5375b3edc3fd56055ee56899b793
       .attr("transform", function(d) { return `translate(${x(d.x0)} , ${y(d.length)})`})
       .attr("width", function(d) { return x(d.x1) - x(d.x0) -1})
       .attr("height", function(d) { return height - y(d.length); })
-      .style("fill", "#69b3a2")
+      .style("fill", "#daaa77")
 
 });
 

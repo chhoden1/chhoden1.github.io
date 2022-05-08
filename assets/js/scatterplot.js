@@ -131,7 +131,7 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
   		// set the radius to 4
       .attr("r",4)
       // set the color of the dots to steelblue
-      .style("fill", "#69b3a2")
+      .style("fill", "#daaa77")
   		.style("stroke", "black")
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
