@@ -1384,8 +1384,8 @@ input, select, textarea {
 		margin: 0;
 		line-height: 1em;
 		padding: 1.5em;
-		background: #39454b;
-		color: rgba(185, 186, 187, 0.5);
+		background: #daaa77;
+		color: rgba(0, 0, 0, 0.969);
 		overflow: hidden;
 	}
 
@@ -1452,7 +1452,8 @@ input, select, textarea {
 /* Intro */
 
 	#intro {
-		background: url("images/overlay.png"), url("../../images/color-image.png");
+		/*background: url("images/overlay.png"), url("../../images/color-image.png");*/
+		background-color: white;
 		background-size: 200px 100px, cover;
 		background-attachment: fixed, fixed;
 		background-position: top left, bottom center;
@@ -1462,7 +1463,9 @@ input, select, textarea {
 /* One */
 
 	#one {
-		background: url("images/overlay.png"), url("../../images/one.jpg");
+		
+        /*background: url("images/overlay.png"), url("../../images/one.jpg"); */
+		background-color: #daaa77;
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
 		background-position: top left, center center;
