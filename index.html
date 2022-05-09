@@ -62,7 +62,6 @@
 					<p>The dataset for this project was collected from Yelp API and different boba shops websites
 						through web scraping in python. Data for the boba shops in the Bay Area from Kaggle https://www.kaggle.com/vnxiclaire/bobabayarea was also used.</p>
 				</div>
-				<br>
 				<div class="content box style2">
 					<header>
 						<h3>Data Processing</h3>
@@ -74,45 +73,75 @@
 				<a href="#two" class="button style2 down anchored">Next</a>
 			</section>
 
-
-		<!-- Two -->
-					<section id="two">
-				<!--<div class ="content">-->
-					<div style="width: 100%; overflow: hidden;">
-						<div style="width: 600px; float: left;">
-						<script src="assets/js/scatterplot.js" ></script>
-						</div>
-					
-						<div style="width: 600px; float: right;"></div>
-							<script src="assets/js/bar-chart.js"></script>
-					</div>
-				</div>
-					
-			</section>
-
+	<!-- BarChart Visualization -->
 			<section id="two">
-				<div style="width: 100%; overflow: hidden;">
-					<div style="width: 600px; float: left;">
-					<script src="assets/js/histogram.js" ></script>
-					</div>
-					<div style="margin-left: 620px;"> 
-							
-					</div>
-					<script src="assets/js/bubblechart.js"></script>
-		 			 </div>
+				<div style="width:600px;position: relative;
+					top:80px;
+					bottom: 0px;
+					right: 40px;
+					border: 4px solid #7b562e; float: right;">
+					<p> Shows the ranking of the most popular boba chains in the United States based on the count of total boba establishments. Kung Fu Tea ranks the highest with a total of a 367 boba shops across the US. Kung Fu Tea clearly has the highest market share in the boba industry. </p>
+				</div>
+				<div style="width: 600px; float: left;">
+					<script src="assets/js/bar-chart.js" ></script>
 				</div>
 			</section>
 
+		<!-- Scatterplot Visualization -->
+			<section id="two">
+				<div style="width: 600px; float: right; position: relative;
+				top:0px;
+				bottom: 0px;
+				left: 30px;">
+					<script src="assets/js/scatterplot.js" ></script>
+				</div>
+				<div style="width:600px;position: relative;
+					top:80px;
+					bottom: 0px;
+					left: 30px;
+					right: 60px;
+					border: 4px solid #7b562e; float: left;">
+					<p> There is a positive correlation between the price of a boba drink and the cost of living index per city. The price variable has been calculated using the average price of the most popular classic milk tea flavor from five boba shops. Both San Francisco and San Jose have the highest cost of living index and boba is more expensive in SF and SJ. </p>
+				</div>
+			</section>
+        <!-- Histogram Chart Visualization -->
+			<section id="two">
+				<div style="width:600px;position: relative;
+					top:80px;
+					bottom: 0px;
+					right: 40px;
+					border: 4px solid #7b562e; float: right;">
+					<p> Shows the distribution of ratings for boba shops in the Bay Area. In the Bay Area, the customer satisfaction level and service quality is on the higher side. </p>
+				</div>
+				<div style="width: 600px; float: left;">
+					<script src="assets/js/histogram.js" ></script>
+				</div>
+			</section>
+            <!-- Bubble Chart Visualization -->
+			<section id="two">
+				<div style="width: 600px; float: right; position: relative;
+				top:0px;
+				bottom: 0px;
+				left: 30px;">
+					<script src="assets/js/bubblechart.js" ></script>
+				</div>
+				<div style="width:600px;position: relative;
+					top:80px;
+					bottom: 0px;
+					left: 30px;
+					right: 60px;
+					border: 4px solid #7b562e; float: left;">
+					<p> Bubble Chart Visualization to show both popularity and demand for boba in the Bay Area. The size of the bubble determines the total count of boba shops. Both San Jose and San Francisco have the highest number of boba shops in the Bay Area suggesting that there is a much greater demand for bubble tea in those cities. </p>
+				</div>
+			</section>
 		
 		<!-- Footer -->
 			<footer id="footer">
-
 				<!-- Icons -->
 					<ul class="icons">
 						<li><a href="https://www.linkedin.com/in/chhodensherpa/" class="icon brands fa-linkedin-in"><span class="label">GitHub</span></a></li>
 						<li><a href="https://github.com" class="icon brands fa fa-github"><span class="label">GitHub</span></a></li>   
 					</ul>
-
 			</footer>
 
 		<!-- Scripts -->

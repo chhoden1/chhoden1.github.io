@@ -1,7 +1,7 @@
 function main(){
 // set the margins and dimensions of the chart
 var margin = {top: 100, right: 30, bottom: 40, left: 160},
-    width = 750 - margin.left - margin.right,
+    width = 750 - margin.left + 45 - margin.right,
     height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body
@@ -12,7 +12,7 @@ var margin = {top: 100, right: 30, bottom: 40, left: 160},
   .append("g")
     .attr("transform",
          // "translate(" + margin.left + "," + margin.top + ")");
-         "translate(" + 80 + ", " + 75 + ")");
+         "translate(" + 130 + ", " + 75 + ")");
 
 		// append the "text" to set the title for the scatter plot
     svg.append("text")

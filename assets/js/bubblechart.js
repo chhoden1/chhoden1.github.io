@@ -15,12 +15,18 @@ function main(){
     var bubble = d3.pack(dataset)
         .size([diameter, diameter])
         .padding(1.5);
-
+    
     var svg = d3.select("body")
         .append("svg")
         .attr("width", diameter)
         .attr("height", diameter)
         .attr("class", "bubble");
+    svg.append("text")
+    .attr("transform", "translate(100, 0")
+    .attr("x", 20)
+    .attr("y", -20)
+    .attr("font-size", "22px")
+    .text("Distribution of ratings for boba shops in the Bay Area")
 
     var nodes = d3.hierarchy(dataset)
         .sum(function(d) { return d.Count; });
