@@ -1,7 +1,7 @@
 function main(){
 // set the margins and dimensions of the chart
 var margin = {top: 100, right: 30, bottom: 40, left: 160},
-    width = 750 - margin.left + 45 - margin.right,
+    width = 800 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body
@@ -11,6 +11,7 @@ var margin = {top: 100, right: 30, bottom: 40, left: 160},
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
+        
          // "translate(" + margin.left + "," + margin.top + ")");
          "translate(" + 130 + ", " + 75 + ")");
 
@@ -21,7 +22,7 @@ var margin = {top: 100, right: 30, bottom: 40, left: 160},
     .attr("x", -5)
     // specify the y position label for the title label
     .attr("y", -30)
-    .attr("font-size", "18px")
+    .attr("font-size", "20px")
     .attr("stroke", "black")
     .text("Correlation between price of a boba drink and cost of living index per city")
       
@@ -29,19 +30,19 @@ var margin = {top: 100, right: 30, bottom: 40, left: 160},
   // The x and y scales are built using scaleLinear   
   // set the x axis
   var xAxis = d3.scaleLinear()    
-    .range([ 0, width]);
+    .range([0, width]);
   
 
   // set the y axis
   var yAxis = d3.scaleLinear()    
-    .range([height, 0]);
+    .range([ height, 0]);
       
 // load the data from a csv file
 // d3.csv function is called to read the csv file 
 // .then(function(data) ensures that the code does not start running until the data has been completely loaded
 d3.csv("csv/scatterplot_data.csv").then(function(data) {
   
-   yAxis.domain([3, d3.max(data, function(d){
+   yAxis.domain([2, d3.max(data, function(d){
       return +d.BobaPrice;
     })]); 
    svg.append("g")
@@ -62,6 +63,7 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
     .text("Price of a boba drink per city on average");
   
    xAxis.domain([50, d3.max(data, function(d){
+    // console.log(d.CostOfLivingIndex); 
       return +d.CostofLivingIndex;
     })]);   
   svg.append("g")
@@ -78,8 +80,12 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
   	// set the axis label for x-axis
   	.text("Cost of Living Index");
   
-// Add a tooltip div
-  // Its opacity is set to 0: we don't see it by default.
+  
+  
+  
+  
+  // Add a tooltip div
+  // Its opacity is set to 0 so we don't see it by default.
   const tooltip = d3.select("body")
     .append("div")
     .style("position", "absolute")
@@ -91,8 +97,10 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
     .style("border-radius", "5px")
     .style("padding", "10px")
 
-// Function that changes the tooltip when the user hovers over a point.
-  // Its opacity is set to 1
+
+
+  // A function that changes this tooltip when the user hovers over a point.
+  // Its opacity is set to 1 and we can now see it
   const mouseover = function(event, d) {
     tooltip
       .style("opacity", 1)
@@ -100,12 +108,12 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
 
   const mousemove = function(event, d) {
     tooltip
-      .html(d.City)
-      .style("left", (event.x)/2 + "px") 
-      .style("top", (event.y)/2 + "px")
+      .html(d.City+ "<br>"+"$"+ d.BobaPrice +"<br>"+d.CostofLivingIndex)
+      .style("left", (event.x)/1.5 + "px") 
+      .style("top", (event.y)/1 + "px")
   }
 
-  // Function that changes this tooltip when the user leaves a point. Reset opacity to 0 again
+  // A function that changes the tooltip when the user leaves the point: reset opacity to 0 
   const mouseleave = function(event,d) {
     tooltip
       .transition()
@@ -113,8 +121,8 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
       .style("opacity", 0)
   }
 
-
-  // create the points for the scatterplot
+  
+  // create the dots for the scatterplot
   svg.append('g')
     .selectAll("dot")
     .data(data)
@@ -133,9 +141,9 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
       // set the color of the dots to steelblue
       .style("fill", "#daaa77")
   		.style("stroke", "black")
-      .on("mouseover", mouseover)
-      .on("mousemove", mousemove)
-      .on("mouseleave", mouseleave)
+      .on("mouseover", mouseover )
+      .on("mousemove", mousemove )
+      .on("mouseleave", mouseleave )
 })
 }
 

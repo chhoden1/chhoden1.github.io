@@ -9,7 +9,6 @@ function main(){
     };
 
     var diameter = 600;
-  //  var color = d3.scaleOrdinal(d3.schemePastel2);
     var color = d3.scaleOrdinal(d3.schemeSet3);
 
     var bubble = d3.pack(dataset)
@@ -21,12 +20,12 @@ function main(){
         .attr("width", diameter)
         .attr("height", diameter)
         .attr("class", "bubble");
-    svg.append("text")
-    .attr("transform", "translate(100, 0")
-    .attr("x", 20)
-    .attr("y", -20)
-    .attr("font-size", "22px")
-    .text("Distribution of ratings for boba shops in the Bay Area")
+        svg.append("text")
+        .attr("transform", "translate(100, 0")
+        .attr("x", 20)
+        .attr("y", -20)
+        .attr("font-size", "22px")
+        .text("Distribution of ratings for boba shops in the Bay Area")
 
     var nodes = d3.hierarchy(dataset)
         .sum(function(d) { return d.Count; });
