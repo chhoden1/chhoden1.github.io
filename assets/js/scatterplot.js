@@ -20,7 +20,7 @@ var margin = {top: 100, right: 30, bottom: 40, left: 160},
     .attr("x", -5)
     // specify the y position label for the title label
     .attr("y", -30)
-    .attr("font-size", "20px")
+    .attr("font-size", "16px")
     .attr("stroke", "black")
     .text("Correlation between price of a boba drink and cost of living index per city")
       
