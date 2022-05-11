@@ -437,7 +437,7 @@ input, select, textarea {
 			input[type="reset"].style2:hover,
 			.button.style2:hover,
 			button.style2:hover {
-				background-color: white;
+				background-color:black;
 			}
 
 			input[type="button"].style2:active,
@@ -445,7 +445,7 @@ input, select, textarea {
 			input[type="reset"].style2:active,
 			.button.style2:active,
 			button.style2:active {
-				background-color: white;
+				background-color:black;
 			}
 
 			input[type="button"].style2.down,

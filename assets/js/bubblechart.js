@@ -1,5 +1,8 @@
 function main(){
-    // set the dimensions and margins of the graph
+// References: 1.https://observablehq.com/@d3/color-schemes
+// 2. https://d3-graph-gallery.com/graph/circularpacking_template.html
+
+ // set the dimensions and margins of the graph
 const width = 700
 const height = 560
 
