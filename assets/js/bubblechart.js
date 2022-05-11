@@ -1,86 +1,106 @@
 function main(){
-    dataset = {
-        "children": [{"Name":"San Jose","Count":56},
-            {"Name":"San Francisco","Count":53},
-            {"Name":"Oakland","Count":26},
-            {"Name":"Vallejo","Count":16},
-            {"Name":"San Mateo","Count":26},
-            {"Name":"Santa Clara","Count":19}]
-    };
+    // set the dimensions and margins of the graph
+const width = 700
+const height = 560
 
-    var diameter = 600;
-    var color = d3.scaleOrdinal(d3.schemeSet3);
+// append the svg object to the body of the page
+const svg = d3.select("#bubblechart")
+  .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+var color = d3.scaleOrdinal(d3.schemeSet3);
+// Read data
+d3.csv("/csv/bubblechart_data.csv").then( function(data) {
 
-    var bubble = d3.pack(dataset)
-        .size([diameter, diameter])
-        .padding(1.5);
-    
-    var svg = d3.select("body")
-        .append("svg")
-        .attr("width", diameter)
-        .attr("height", diameter)
-        .attr("class", "bubble");
-        svg.append("text")
-        .attr("transform", "translate(100, 0")
-        .attr("x", 20)
-        .attr("y", -20)
-        .attr("font-size", "22px")
-        .text("Distribution of ratings for boba shops in the Bay Area")
+  // Size scale for cities
+  const size = d3.scaleLinear()
+    .domain([0, 100])
+    .range([7,150])  // circle will be between 7 and 150 px wide
 
-    var nodes = d3.hierarchy(dataset)
-        .sum(function(d) { return d.Count; });
+  // create a tooltip
+  const Tooltip = d3.select("#bubblechart")
+    .append("div")
+    .style("position", "absolute")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "white")
+    .style("border", "solid")
+    .style("border-width", "2px")
+    .style("border-radius", "5px")
+    .style("padding", "5px")
 
-    var node = svg.selectAll(".node")
-        .data(bubble(nodes).descendants())
-        .enter()
-        .filter(function(d){
-            return  !d.children
-        })
-        .append("g")
-        .attr("class", "node")
-        .attr("transform", function(d) {
-            return "translate(" + d.x + "," + d.y + ")";
-        });
+  // Three function that change the tooltip when user hover / move / leave a cell
+  const mouseover = function(event, d) {
+    Tooltip
+      .style("opacity", 1)
+  }
+  const mousemove = function(event, d) {
+    Tooltip
+      .html('<u>' + d.city + '</u>' + "<br>" + d.count + "  Boba Shops")
+      .style("left", (event.pageX/2+20) + "px")
+      .style("top", (event.pageY/2-30) + "px")
+  }
+  var mouseleave = function(event, d) {
+    Tooltip
+      .style("opacity", 0)
+  }
 
-    node.append("title")
-        .text(function(d) {
-            return d.Name + ": " + d.Count;
-        });
-
-    node.append("circle")
-        .attr("r", function(d) {
-            return d.r;
-        })
-        .style("fill", function(d,i) {
+  // Initialize the circle: all located at the center of the svg area
+  var node = svg.append("g")
+    .selectAll("circle")
+    .data(data)
+    .join("circle")
+    .attr("class", "node")
+    .attr("r", d => size(d.count))
+      .attr("cx", width / 2)
+      .attr("cy", height / 2)
+      .style("fill", function(d,i) {
             return color(i);
-        });
-
-    node.append("text")
-        .attr("dy", ".2em")
-        .style("text-anchor", "middle")
-        .text(function(d) {
-            return d.data.Name.substring(0, d.r / 3);
         })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", function(d){
-            return d.r/5;
-        })
-        .attr("fill", "black");
+      .style("fill-opacity", 0.8)
+      .attr("stroke", "black")
+      .style("stroke-width", 1)
+      // when user hovers over a circle
+      .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
+      .call(d3.drag()
+           .on("start", dragstarted)
+           .on("drag", dragged)
+           .on("end", dragended));
 
-    node.append("text")
-        .attr("dy", "1.3em")
-        .style("text-anchor", "middle")
-        .text(function(d) {
-            return d.data.Count;
-        })
-        .attr("font-family",  "Gill Sans", "Gill Sans MT")
-        .attr("font-size", function(d){
-            return d.r/5;
-        })
-        .attr("fill", "black");
+  // Features of the forces applied to the nodes:
+  const simulation = d3.forceSimulation()
+      .force("center", d3.forceCenter().x(width / 2).y(height / 2)) // Attraction to the center of the svg area
+      .force("charge", d3.forceManyBody().strength(.1)) // Nodes are attracted one each other of value is > 0
+      .force("collide", d3.forceCollide().strength(.2).radius(function(d){ return (size(d.count)+3) }).iterations(1)) // Force that avoids circle overlapping
 
-    d3.select(self.frameElement)
-        .style("height", diameter + "px");
+  // Apply these forces to the nodes and update their positions.
+  // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
+  simulation
+      .nodes(data)
+      .on("tick", function(d){
+        node
+            .attr("cx", d => d.x)
+            .attr("cy", d => d.y)
+      });
 
+
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(.03).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+  function dragended(event, d) {
+    if (!event.active) simulation.alphaTarget(.03);
+    d.fx = null;
+    d.fy = null;
+  }
+
+})
 }
 main();

@@ -109,8 +109,8 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
   const mousemove = function(event, d) {
     tooltip
       .html(d.City+ "<br>"+"$"+ d.BobaPrice +"<br>"+d.CostofLivingIndex)
-      .style("left", (event.x)/1.5 + "px") 
-      .style("top", (event.y)/1 + "px")
+      .style("left", (event.pageX)/1.5 + "px") 
+      .style("top", (event.pageY)/1 + "px")
   }
 
   // A function that changes the tooltip when the user leaves the point: reset opacity to 0 
@@ -146,5 +146,4 @@ d3.csv("csv/scatterplot_data.csv").then(function(data) {
       .on("mouseleave", mouseleave )
 })
 }
-
 main();
