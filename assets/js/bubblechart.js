@@ -23,7 +23,7 @@ d3.csv("/csv/bubblechart_data.csv").then( function(data) {
   // create a tooltip
   const Tooltip = d3.select("#bubblechart")
     .append("div")
-    .style("position", "absolute")
+    //.style("position", "absolute")
     .style("opacity", 0)
     .attr("class", "tooltip")
     .style("background-color", "white")

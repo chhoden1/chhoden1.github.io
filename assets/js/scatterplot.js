@@ -5,7 +5,7 @@ var margin = {top: 100, right: 30, bottom: 40, left: 160},
     height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body
-      var svg = d3.select("body")
+      var svg = d3.select("#scatterplot")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -80,9 +80,9 @@ d3.csv("/csv/scatterplot_data.csv").then(function(data) {
   
   // Add a tooltip div
   // the opacity is set to 0 by default
-  const tooltip = d3.select("body")
+  const tooltip = d3.select("#scatterplot")
     .append("div")
-    .style("position", "absolute")
+    //.style("position", "absolute")
     .style("opacity", 0)
     .attr("class", "tooltip")
     .style("background-color", "white")
@@ -102,8 +102,8 @@ d3.csv("/csv/scatterplot_data.csv").then(function(data) {
   const mousemove = function(event, d) {
     tooltip
       .html('<u>' +d.City+  '</u>' + "<br>"+"$"+ d.BobaPrice +"<br>"+d.CostofLivingIndex)
-      .style("left", (event.x)/1.5 + "px") 
-      .style("top", (event.y)/1 + "px")
+      .style("left", (event.pageX)/1.5 + "px") 
+      .style("top", (event.pageY)/1 + "px")
   }
 
   // A function that changes the tooltip when the user leaves the point: reset opacity to 0 

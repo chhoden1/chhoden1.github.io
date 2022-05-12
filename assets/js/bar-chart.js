@@ -6,7 +6,7 @@ function main()
 					
 	// create and empty SVG element and add it to the DOM
 	// append the svg element to the body
-	var svg = d3.select("body").append("svg")
+	var svg = d3.select("#barchart").append("svg")
 		.attr("width",  svgWidth)
 		.attr("height", svgHeight)
 					
@@ -47,9 +47,9 @@ function main()
 
 			// Add a tooltip div
   // Its opacity is set to 0: we don't see it by default.
-  const tooltip = d3.select("body")
+  const tooltip = d3.select("#barchart")
   .append("div")
-  .style("position", "absolute")
+  //.style("position", "absolute")
   .style("opacity", 0)
   .attr("class", "tooltip")
   .style("background-color", "white")
