@@ -20,7 +20,7 @@ var margin = {top: 100, right: 30, bottom: 40, left: 160},
     .attr("x", -5)
     // specify the y position label for the title label
     .attr("y", -30)
-    .attr("font-size", "16px")
+    .attr("font-size", "18px")
     .attr("stroke", "black")
     .text("Correlation between price of a boba drink and cost of living index per city")
       
@@ -54,9 +54,10 @@ d3.csv("/csv/scatterplot_data.csv").then(function(data) {
   	// specify the x position for the y-axis label
     .attr("x", -120)
     // specify the y position for the y-axis label
-    .attr("y", -2)
+    .attr("y", 7)
     .attr("dy", "-5em")
     .attr("stroke", "black")
+    .attr("font-size", "12px")
     // set the axis label for y-axis
     .text("Price of a boba drink per city on average");
   
@@ -75,6 +76,7 @@ d3.csv("/csv/scatterplot_data.csv").then(function(data) {
     // specify the y position for the y-axis label
   	.attr("y", height - 425)
   	.attr("stroke", "black")
+    .attr("font-size", "12px")
   	// set the axis label for x-axis
   	.text("Cost of Living Index");
   

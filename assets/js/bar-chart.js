@@ -15,10 +15,10 @@ function main()
 	// append the "text" to display the title of the chart
 	svg.append("text")
 		.attr("transform", "translate(100, 0")
-		.attr("x", 120)
+		.attr("x", 90)
 		.attr("y", 30)
         .attr("stroke", "black")
-		.attr("font-size", "18px")
+		.attr("font-size", "19px")
 		.text("Ranking of the most popular boba chains in the United States")
 					
 		// scaleBand automatically scale the x axis and gives the right amount of space for the x - axis
@@ -116,6 +116,7 @@ const mouseleave = function(event,d) {
 			// specify the y position for the x-axis label
 			.attr("y", height-350)
 			.attr("stroke", "black")
+			.attr("font-size", "12px")
 			// specify the label for the  x-axis
 			.text("Boba Chains")
 					
@@ -130,9 +131,10 @@ const mouseleave = function(event,d) {
 				// specify the x position for the y-axis label
 				.attr("x", -150)
 				// specify the y position for the y-axis label
-				.attr("y", -5)
+				.attr("y", 5)
 				.attr("dy", "-5em")
 				.attr("stroke", "black")
+				.attr("font-size", "12px")
 				// set the label for the y-axis
 				.text("Total number of boba establishments")
 			})

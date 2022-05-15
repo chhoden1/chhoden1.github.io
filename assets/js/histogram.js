@@ -15,8 +15,9 @@ var svg = d3.select("body")
  svg.append("text")
     .attr("transform", "translate(100, 0")
     .attr("x", 20)
-    .attr("y", -20)
-    .attr("font-size", "22px")
+    .attr("y", -15)
+    .attr("stroke", "black")
+    .attr("font-size", "20px")
     .text("Distribution of ratings for boba shops in the Bay Area")
 
 
@@ -36,6 +37,7 @@ d3.csv("https://gist.githubusercontent.com/chhodens/5375b3edc3fd56055ee56899b793
       	// specify the y position for the x-axis label
         .attr("y", height-300)
         .attr("stroke", "black")
+        .attr("font-size", "12px")
         // specify the label for the  x-axis
         .text("Customer Rating")
       
@@ -61,10 +63,11 @@ d3.csv("https://gist.githubusercontent.com/chhodens/5375b3edc3fd56055ee56899b793
         // specify the x position for the y-axis label
         .attr("x", -150)
         // specify the y position for the y-axis label
-        .attr("y", -5)
+        .attr("y", 10)
         .attr("dy", "-5em")
         .attr("stroke", "black")
         // set the label for the y-axis
+        .attr("font-size", "12px")
         .text("Count of boba shops")
 
   // append the bar rectangles to the svg element
