@@ -62,7 +62,6 @@ d3.csv("/csv/scatterplot_data.csv").then(function(data) {
     .text("Price of a boba drink per city on average");
   
    xAxis.domain([50, d3.max(data, function(d){
-    // console.log(d.CostOfLivingIndex); 
       return +d.CostofLivingIndex;
     })]);   
   svg.append("g")
@@ -84,7 +83,6 @@ d3.csv("/csv/scatterplot_data.csv").then(function(data) {
   // the opacity is set to 0 by default
   const tooltip = d3.select("#scatterplot")
     .append("div")
-    //.style("position", "absolute")
     .style("opacity", 0)
     .attr("class", "tooltip")
     .style("background-color", "white")
@@ -119,19 +117,19 @@ d3.csv("/csv/scatterplot_data.csv").then(function(data) {
   
   // create the dots for the scatterplot
   svg.append('g')
-    .selectAll("dot")
-    .data(data)
-    .enter()
-    .append("circle")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("circle")
       .attr("cx", function (d){
           // returns scaled value
-    			return xAxis(d.CostofLivingIndex);
+    		return xAxis(d.CostofLivingIndex);
       })
       .attr("cy", function (d){
-          // returns scaled value
-    			return yAxis(d.BobaPrice);
+        // returns scaled value
+    		return yAxis(d.BobaPrice);
   		})
-  		// set the radius to 4
+  		// set the radius to 5
       .attr("r",5)
       .style("fill", "#daaa77")
   		.style("stroke", "black")

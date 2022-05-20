@@ -21,20 +21,20 @@ function main()
 		.attr("font-size", "19px")
 		.text("Ranking of the most popular boba chains in the United States")
 					
-		// scaleBand automatically scale the x axis and gives the right amount of space for the x - axis
+		// scaleBand automatically scales the x axis and gives the right amount of space for the x - axis
 		// declare and initialize both x and y scale so they perfectly fit on the canvas
 		// the padding function allows for space between the rectangle bars
-		var xScale = d3.scaleBand().range([0, width]).padding(0.3);
-		var yScale = d3.scaleLinear().range([height, 0]);
+	var xScale = d3.scaleBand().range([0, width]).padding(0.3);
+	var yScale = d3.scaleLinear().range([height, 0]);
 					
-		var container_g = svg.append("g")
-			.attr("transform","translate(" + 80 + ", " + 45 + ")");
+	var container_g = svg.append("g")
+		.attr("transform","translate(" + 80 + ", " + 45 + ")");
 					
 						
 		// d3.csv function is called to read the file from a csv file
 		// .then(data=> ensures that the code does not start running until the data has been completely loaded
-		d3.csv("/csv/barchart_data.csv").then(data => {
-		 // Specify the xScale based on the "company" attribute in the data set
+	d3.csv("/csv/barchart_data.csv").then(data => {
+		// Specify the xScale based on the "company" attribute in the data set
 		xScale.domain(data.map(function(d){
 			return d.bobachain;
 		}));
@@ -45,42 +45,41 @@ function main()
 				
 			
 
-			// Add a tooltip div
-  // Its opacity is set to 0: we don't see it by default.
-  const tooltip = d3.select("#barchart")
-  .append("div")
-  //.style("position", "absolute")
-  .style("opacity", 0)
-  .attr("class", "tooltip")
-  .style("background-color", "white")
-  .style("border", "solid")
-  .style("border-width", "1px")
-  .style("border-radius", "5px")
-  .style("padding", "10px")
+		// Add a tooltip div
+		// Its opacity is set to 0: we don't see it by default.
+		const tooltip = d3.select("#barchart")
+			.append("div")
+			.style("opacity", 0)
+			.attr("class", "tooltip")
+			.style("background-color", "white")
+			.style("border", "solid")
+			.style("border-width", "1px")
+			.style("border-radius", "5px")
+			.style("padding", "10px")
 
 
 
-// A function that change this tooltip when the user hover a point.
-// Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
-const mouseover = function(event, d) {
-  tooltip
-	.style("opacity", 1)
-}
+		// A function that change this tooltip when the user hover a point.
+		// Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+		const mouseover = function(event, d) {
+		tooltip
+			.style("opacity", 1)
+		}
 
-const mousemove = function(event, d) {
-  tooltip
-	.html(d.numberofestablishments)
-	.style("left", (event.x)/2 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-	.style("top", (event.y)/2 + "px")
-}
+		const mousemove = function(event, d) {
+		tooltip
+			.html(d.numberofestablishments)
+			.style("left", (event.x)/2 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+			.style("top", (event.y)/2 + "px")
+		}
 
-// A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
-const mouseleave = function(event,d) {
-  tooltip
-	.transition()
-	.duration(200)
-	.style("opacity", 0)
-}
+		// A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+		const mouseleave = function(event,d) {
+		tooltip
+			.transition()
+			.duration(200)
+			.style("opacity", 0)
+		}
 
 		// Draw the bars
 		container_g.selectAll(".bar")
@@ -137,6 +136,6 @@ const mouseleave = function(event,d) {
 				.attr("font-size", "12px")
 				// set the label for the y-axis
 				.text("Total number of boba establishments")
-			})
+	})
 }
 main();
